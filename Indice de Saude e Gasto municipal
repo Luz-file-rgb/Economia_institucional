@@ -1,0 +1,28 @@
+**********Relação entre Índice Saúde e gasto municipal
+************************************
+use "G:\Arquivos Temporários\Econometria III\IFDM.dta"
+
+*Criando as variáveis na forma de ln
+gen lnSS=ln(ss)
+gen lnAPS=ln(aps)
+gen lnHU=ln(hu)
+
+
+*Usando a linearização para o Y
+gen IFDMt=ln(ifdms/(1-ifdms))
+
+*Para maiores referencias sobre o assunto:
+http://sistemabu.udesc.br/pergamumweb/vinculos/000006/00000658.pdf
+
+*Para salvar o valor esperado do IFDMt
+predict IFDMt_estimado
+
+*Recuperando o IFDM_estiamdo
+gen IFDM_estimado = 1/(1+exp((-1)*IFDMt_estimado))
+
+
+*Podemos analisar a eficiencia relativa dos municípios
+
+gen ER=ifdms/IFDM_estimado
+
+sort ER
