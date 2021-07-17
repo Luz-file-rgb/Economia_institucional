@@ -1,2 +1,2 @@
 # Economia_institucional
-**modelos em painel para economia institucional
+**modelos para economia institucional
